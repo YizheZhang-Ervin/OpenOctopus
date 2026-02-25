@@ -5,11 +5,11 @@
 Store API keys securely:
 ```bash
 # Set proper permissions for config file
-chmod 600 ~/.nanobot/config.json
+chmod 600 ./.nanobot/config.json
 ```
 
 **Best practices:**
-- Store API keys in `~/.nanobot/config.json`
+- Store API keys in `./.nanobot/config.json`
 - Use environment variables for sensitive keys
 - Rotate API keys regularly
 - Use separate keys for development and production
@@ -20,10 +20,11 @@ Always configure `allowFrom` lists:
 ```json
 {
   "channels": {
-    "telegram": {
+    "http_api": {
       "enabled": true,
-      "token": "YOUR_BOT_TOKEN",
-      "allowFrom": ["123456789", "987654321"]
+      "host": "0.0.0.0",
+      "port": 8000,
+      "allow_from": ["127.0.0.1", "::1"]
     }
   }
 }
@@ -59,14 +60,6 @@ Regularly check for vulnerabilities:
 # Python dependencies
 pip install pip-audit
 pip-audit
-
-# Update packages
-pip install --upgrade nanobot-ai
-
-# Node.js dependencies (WhatsApp bridge)
-cd bridge
-npm audit
-npm audit fix
 ```
 
 ## Configuration Security

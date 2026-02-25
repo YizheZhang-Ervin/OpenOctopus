@@ -36,7 +36,7 @@ async def test_http_api():
 if __name__ == "__main__":
     print("Testing HTTP API channel...")
     print("Make sure you have started nanobot gateway with HTTP API channel enabled.")
-    print("Example config in ~/.nanobot/config.json:")
+    print("Example config in ./.nanobot/config.json:")
     print(json.dumps({
         "channels": {
             "http_api": {

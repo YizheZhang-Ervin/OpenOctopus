@@ -4,16 +4,24 @@
 - 简化版NanoBot
 - 精简内容：去掉商业channel接入、去掉商业模型API接入
 - 保留内容：核心agent运作机制、http方式channel接入、openAI兼容性API接入
-- 新增内容：web界面UI(功能：和agent对话/查看技能列表)
+- 新增内容：
+    - bot-ui: web界面(功能：和agent对话/查看技能列表)
+    - nodebot: nodejs版nanobot
+    - llm-gateway: llm网关（用于内部系统/特殊LLM对话接口封装的http网关,聚合常用&自定义模型API）
+    - llm-ui: 机器人对话交互界面（纯html/css/js）
 
 ## 1. 安装
 ```bash
-# backend
+# backend（python）
 cd nanobot
 pip install -e .
 
+# backend（nodejs）
+cd nodebot
+npm install
+
 # frontend 安装&运行
-cd frontend
+cd bot-ui
 npm install
 npm run dev
 ```
@@ -24,10 +32,10 @@ npm run dev
 nanobot onboard  
 
 # Configure `~/.nanobot/config.json`
-# 见config.example.json
+# 见example.config.json
 ```
 
-## 3-A. 使用
+## 3. 使用
 ```sh
 nanobot onboard                    # Initialize config & workspace
 nanobot agent                      # Interactive chat mode
@@ -49,42 +57,4 @@ nanobot cron remove <job_id>
 nanobot memory save "key" "value"
 nanobot memory get "key"
 nanobot memory list
-```
-
-
-## 3-B. 使用：docker
-```bash
-# Build the image
-docker build -t nanobot .
-
-# Initialize config (first time only)
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot onboard
-
-# Edit config on host to add API keys
-vim ~/.nanobot/config.json
-
-# Run gateway (connects to enabled channels, e.g. Telegram/Discord/Mochat)
-docker run -v ~/.nanobot:/root/.nanobot -p 18790:18790 nanobot gateway
-
-# Or run a single command
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot agent -m "Hello!"
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot status
-```
-
-## 3-C. 使用：docker compose
-```sh
-docker compose run --rm nanobot-cli onboard   # first-time setup
-vim ~/.nanobot/config.json                     # add API keys
-docker compose up -d nanobot-gateway           # start gateway
-
-docker compose run --rm nanobot-cli agent -m "Hello!"   # run CLI
-docker compose logs -f nanobot-gateway                   # view logs
-docker compose down                                      # stop
-```
-
-## 4. 其他
-```
-channel相关：docs/channel_http_api.md
-安全相关：docs/SECURITY.md
-技能相关：docs/skills.md
 ```
