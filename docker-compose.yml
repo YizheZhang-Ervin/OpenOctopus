@@ -1,0 +1,76 @@
+# Optimized docker-compose.yml for nanobot
+version: '3.8'
+
+x-common-config: &common-config
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - ~/.nanobot:/home/nanobot/.nanobot
+    - ./workspace:/home/nanobot/.nanobot/workspace
+  environment:
+    - PYTHONUNBUFFERED=1
+    - NANOBOT_CONFIG_PATH=/home/nanobot/.nanobot/config.json
+  restart: unless-stopped
+
+services:
+  # Main nanobot gateway service
+  nanobot-gateway:
+    container_name: nanobot-gateway
+    <<: *common-config
+    command: ["gateway"]
+    ports:
+      - "18790:18790"  # Main gateway port
+      - "8000:8000"    # HTTP API port (if configured)
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "timeout", "10", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/18790"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # CLI service for running commands interactively
+  nanobot-cli:
+    <<: *common-config
+    profiles:
+      - cli
+    command: ["agent"]
+    stdin_open: true
+    tty: true
+    environment:
+      <<: *common-config.environment
+      - COLUMNS=120
+      - LINES=40
+
+  # Service for initial onboarding/setup
+  nanobot-onboard:
+    <<: *common-config
+    profiles:
+      - setup
+    command: ["onboard"]
+    stdin_open: true
+    tty: true
+
+  # Service for checking status
+  nanobot-status:
+    <<: *common-config
+    profiles:
+      - monitoring
+    command: ["status"]
+    restart: "no"
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  nanobot_config:
+  nanobot_workspace:
