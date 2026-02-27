@@ -18,6 +18,4 @@ __pycache__/
 poetry.lock
 .pytest_cache/
 botpy.log
-
-.nodebot/
-.nanobot/
+uv.lock

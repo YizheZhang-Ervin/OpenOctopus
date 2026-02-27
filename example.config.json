@@ -1,67 +1,74 @@
 {
-  "agents": {
-    "defaults": {
-      "workspace": "./.nanobot/workspace",
-      "model": "gpt-4o",
-      "max_tokens": 4096,
-      "temperature": 0.7,
-      "max_tool_iterations": 20,
-      "memory_window": 50
-    }
-  },
-  "channels": {
-    "email": {
-      "enabled": false,
-      "consent_granted": false,
-      "imap_host": "",
-      "imap_port": 993,
-      "imap_username": "",
-      "imap_password": "",
-      "imap_mailbox": "INBOX",
-      "imap_use_ssl": true,
-      "smtp_host": "",
-      "smtp_port": 587,
-      "smtp_username": "",
-      "smtp_password": "",
-      "smtp_use_tls": true,
-      "smtp_use_ssl": false,
-      "from_address": "",
-      "auto_reply_enabled": true,
-      "poll_interval_seconds": 30,
-      "mark_seen": true,
-      "max_body_chars": 12000,
-      "subject_prefix": "Re: ",
-      "allow_from": []
+    "agents": {
+        "defaults": {
+            "workspace": "~/.nanobot/workspace",
+            "model": "anthropic/claude-opus-4-5",
+            "maxTokens": 8192,
+            "temperature": 0.7,
+            "maxToolIterations": 20,
+            "memoryWindow": 50
+        }
     },
-    "http_api": {
-      "enabled": true,
-      "host": "0.0.0.0",
-      "port": 8000,
-      "allow_from": []
-    }
-  },
-  "providers": {
-    "custom": {
-      "api_key": "",
-      "api_base": null,
-      "extra_headers": null
-    }
-  },
-  "gateway": {
-    "host": "0.0.0.0",
-    "port": 18790
-  },
-  "tools": {
-    "web": {
-      "search": {
-        "api_key": "",
-        "max_results": 5
-      }
+    "channels": {
+        "email": {
+            "enabled": false,
+            "consentGranted": false,
+            "imapHost": "",
+            "imapPort": 993,
+            "imapUsername": "",
+            "imapPassword": "",
+            "imapMailbox": "INBOX",
+            "imapUseSsl": true,
+            "smtpHost": "",
+            "smtpPort": 587,
+            "smtpUsername": "",
+            "smtpPassword": "",
+            "smtpUseTls": true,
+            "smtpUseSsl": false,
+            "fromAddress": "",
+            "autoReplyEnabled": true,
+            "pollIntervalSeconds": 30,
+            "markSeen": true,
+            "maxBodyChars": 12000,
+            "subjectPrefix": "Re: ",
+            "allowFrom": []
+        },
+        "httpApi": {
+            "enabled": false,
+            "host": "0.0.0.0",
+            "port": 8000,
+            "allowFrom": []
+        }
     },
-    "exec": {
-      "timeout": 60
+    "providers": {
+        "custom": {
+            "apiKey": "",
+            "apiBase": null,
+            "extraHeaders": null
+        }
     },
-    "restrict_to_workspace": false,
-    "mcp_servers": {}
-  }
+    "gateway": {
+        "host": "0.0.0.0",
+        "port": 18790
+    },
+    "tools": {
+        "web": {
+            "search": {
+                "apiKey": "",
+                "maxResults": 5
+            }
+        },
+        "filesystem": {
+            "allowed_paths": [
+                "./workspace",
+                "./data"
+            ],
+            "max_file_size": 10485760
+        },
+        "exec": {
+            "timeout": 60
+        },
+        "restrictToWorkspace": false,
+        "mcpServers": {}
+    }
 }

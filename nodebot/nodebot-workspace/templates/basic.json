@@ -1,5 +1,0 @@
-{
-  "name": "basic-agent",
-  "description": "Basic agent template",
-  "systemPrompt": "You are nodebot, a helpful AI assistant implemented in Node.js."
-}

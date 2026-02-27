@@ -37,7 +37,7 @@ class ChatResponse(BaseModel):
 class HttpApiConfig(Base):
     """HTTP API channel configuration."""
 
-    enabled: bool = False
+    enabled: bool = True
     host: str = "0.0.0.0"
     port: int = 8000
     allow_from: list[str] = []  # List of allowed IP addresses or CIDR ranges

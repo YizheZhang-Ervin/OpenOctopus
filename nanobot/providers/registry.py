@@ -77,48 +77,6 @@ PROVIDERS: tuple[ProviderSpec, ...] = (
         litellm_prefix="",
         is_direct=True,
     ),
-
-    # === Gateways (detected by api_key / api_base, not model name) =========
-    # Gateways can route any model, so they win in fallback.
-
-    # OpenAI: LiteLLM recognizes "gpt-*" natively, no prefix needed.
-    ProviderSpec(
-        name="openai",
-        keywords=("openai", "gpt"),
-        env_key="OPENAI_API_KEY",
-        display_name="OpenAI",
-        litellm_prefix="",
-        skip_prefixes=(),
-        env_extras=(),
-        is_gateway=False,
-        is_local=False,
-        detect_by_key_prefix="",
-        detect_by_base_keyword="",
-        default_api_base="",
-        strip_model_prefix=False,
-        model_overrides=(),
-    ),
-
-    # === Local deployment (matched by config key, NOT by api_base) =========
-
-    # vLLM / any OpenAI-compatible local server.
-    # Detected when config key is "vllm" (provider_name="vllm").
-    ProviderSpec(
-        name="vllm",
-        keywords=("vllm",),
-        env_key="HOSTED_VLLM_API_KEY",
-        display_name="vLLM/Local",
-        litellm_prefix="hosted_vllm",      # Llama-3-8B → hosted_vllm/Llama-3-8B
-        skip_prefixes=(),
-        env_extras=(),
-        is_gateway=False,
-        is_local=True,
-        detect_by_key_prefix="",
-        detect_by_base_keyword="",
-        default_api_base="",                # user must provide in config
-        strip_model_prefix=False,
-        model_overrides=(),
-    )
 )
 
 
