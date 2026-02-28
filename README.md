@@ -2,7 +2,7 @@
 
 OpenOctopus is an open-source personal AI assistant platform that provides an AI agent implementation based on Python (Nanobot).
 
-## Features
+## 1. Features
 
 - **Python Implementation**: Nanobot (Python)
 - **Multi-channel Communication**: Supports email, HTTP API and other communication channels
@@ -11,7 +11,7 @@ OpenOctopus is an open-source personal AI assistant platform that provides an AI
 - **Memory System**: Session and memory management
 - **Extensible**: Plugin-based tools and skill systems
 
-## Prerequisites
+## 2. Prerequisites
 
 - **Python**: 3.8+
 - **Operating System**: Windows, macOS, Linux
@@ -19,24 +19,20 @@ OpenOctopus is an open-source personal AI assistant platform that provides an AI
 - **Disk Space**: At least 1GB available space
 - **Network**: Stable internet connection
 
-## Quick Start
+## 3. Quick Start
 
 #### Install dependencies
 
 ```bash
-# Clone repository
-git clone https://github.com/your-repo/OpenOctopus.git
-cd OpenOctopus
-
 # Install dependencies
 cd nanobot
 uv sync
 
-cd ../bot-ui
+cd ../octopus-ui
 npm install
 ```
 
-## Nanobot (Python Implementation)
+## 4. Nanobot (Python Implementation)
 
 ### Setup and Usage
 ```bash
@@ -66,7 +62,7 @@ uv run nanobot status
 - **LLM Support**: Multiple providers via LiteLLM
 - **Skills**: Extensive pre-built skills
 
-## Octopus (TypeScript Implementation) - Alternative Option
+## 5. Octopus (TypeScript Implementation) - Alternative Option
 
 Octopus is a TypeScript-based implementation of the AI agent, providing an alternative to the Python-based Nanobot. It offers similar functionality with a different technology stack.
 
@@ -114,42 +110,39 @@ npm start gateway -p 8000
 - **Port Flexibility**: If you need separate ports for HTTP API and WebSocket
 - **Custom API**: If you're using a custom LLM API endpoint
 
-## Project Structure
-
+## 6. Project Structure
 ```
 OpenOctopus/
 ├── nanobot/              # Python-based AI agent
 ├── octopus/              # TypeScript-based AI agent (alternative)
-├── bot-ui/               # Frontend interface
+├── octopus-ui/               # Frontend interface
 ├── docs/                 # Documentation
 ├── tests/                # Test files
 ├── workspace/            # Shared workspace directory
 └── example.config.json   # Example configuration file
 ```
 
-
-
-## Communication Channels
+## 7. Communication Channels
 
 - **Email Channel**: Email communication via IMAP/SMTP
 - **HTTP API Channel**: RESTful API interface
 - **Real-time Chat**: Interaction through frontend interface
 
-## Tool System
+## 8. Tool System
 
 - **File System Tools**: Reading and writing local files
 - **Network Tools**: Web search and content scraping
 - **Shell Tools**: Executing system commands
 - **MCP Support**: Model Context Protocol integration
 
-## Configuration
+## 9. Configuration
 
 Configuration can be managed via the example config file:
-- [Example Configuration](./example.config.json) - Example configuration file
+- common nanobot & octopus: [Example Configuration](./example.config.json) - Example configuration fileon file
 
-## HTTP API Channel Usage
+## 10. HTTP API Channel Usage
 
-### Nanobot API Endpoints (Port 8000)
+### 10.1 Nanobot API Endpoints (Port 8000)
 
 #### POST /api/chat
 Send message to Nanobot with session management
@@ -214,7 +207,7 @@ Response:
 }
 ```
 
-### Octopus API Endpoints (HTTP API Port 8001, WebSocket Port 18791)
+### 10.2 Octopus API Endpoints (HTTP API Port 8001, WebSocket Port 18791)
 
 #### POST /api/chat
 Send message to Octopus with session management
@@ -302,7 +295,7 @@ ws.onmessage = (event) => {
 };
 ```
 
-## Testing
+## 11. Testing
 
 ### Running Tests
 ```bash
@@ -315,10 +308,10 @@ cd octopus
 npm test
 ```
 
-## Contributing
+## 12. Contributing
 
 Contributions of any form are welcome!
 
-## License
+## 13. License
 
 MIT License

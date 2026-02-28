@@ -86,7 +86,7 @@ const agentsConfigSchema = Joi.object({
 
 const providerConfigSchema = Joi.object({
     apiKey: Joi.string().default(''),
-    apiBase: Joi.string().optional(),
+    apiBase: Joi.string().default(''),
     extraHeaders: Joi.object().pattern(Joi.string(), Joi.string()).optional()
 });
 

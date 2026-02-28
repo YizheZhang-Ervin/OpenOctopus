@@ -1,7 +1,7 @@
 # install
-cd ../bot-ui
+cd ../octopus-ui
 npm install
 
 # run
-cd ../bot-ui
+cd ../octopus-ui
 npm run dev

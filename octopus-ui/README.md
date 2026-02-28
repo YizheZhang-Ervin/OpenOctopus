@@ -21,7 +21,7 @@ Before running the frontend, ensure you have:
 
 1. Navigate to the frontend directory:
 ```bash
-cd bot-ui
+cd octopus-ui
 ```
 
 2. Install dependencies:
