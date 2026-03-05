@@ -1,5 +1,8 @@
-# OpenOctopus
+<div align="center">
+  <img src="./octopus-ui/public/octopus.png" alt="OpenOctopus Logo" width="300">
+</div>
 
+# OpenOctopus
 OpenOctopus is an open-source personal AI assistant platform that provides an AI agent implementation based on Python (Nanobot).
 
 ## 1. Features
